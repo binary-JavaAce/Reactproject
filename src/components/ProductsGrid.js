@@ -1,26 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../styles.css";
 import Product from "./Product.js";
 
-export default function ProductGrid() {
-  const [products, setProducts] = useState([]);
+export default function ProductGrid({ products, addProductToCart }) {
+  //const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [price, setprice] = useState("");
   const [rating, setRating] = useState("");
 
-  useEffect(() => {
-    fetch("products.json")
-      .then((response) => response.json())
-      .then((data) => setProducts(data))
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
-
+  // useEffect(() => {
+  //   fetch("products.json")
+  //     .then((response) => response.json())
+  //     .then((data) => setProducts(data))
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // }, []);
+  //search handler
   const handleSearch = (e) => setSearch(e.target.value);
+
+  //price handler
   const priceHandler = (e) => setprice(e.target.value);
+  //rating handler
   const ratingHandler = (e) => setRating(e.target.value);
 
+  //Return price for filter
   const matchesPrice = (productPrice, price) => {
     if (price === "<=$10") {
       return productPrice <= 10;
@@ -36,6 +40,7 @@ export default function ProductGrid() {
     return true;
   };
 
+  //Filtering the products based on different condition
   const filterProducts = products.filter((product) => {
     const matchesSearch = product.title
       .toLowerCase()
@@ -79,7 +84,7 @@ export default function ProductGrid() {
             value={rating}
             onChange={ratingHandler}
           >
-            <option>Rating</option>
+            <option value="">Rating</option>
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -98,7 +103,11 @@ export default function ProductGrid() {
       <div className="products-grid">
         {filterProducts.map((product) => (
           /* Calling product component */
-          <Product product={product} key={product.id}></Product>
+          <Product
+            product={product}
+            key={product.id}
+            addProductToCart={addProductToCart}
+          ></Product>
         ))}
       </div>
     </div>

@@ -9,11 +9,11 @@ export default function Header() {
         src="/images/headerImage4.jfif"
         alt="product_image"
       ></img>
-      <img
+      {/* <img
         className="logo"
         src="/images/headerImage5.jfif"
         alt="product_image"
-      ></img>
+      ></img> */}
     </div>
   );
 }
