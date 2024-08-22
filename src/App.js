@@ -4,7 +4,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ProductsGrid from "./components/ProductsGrid";
 import Cart from "./components/Cart";
-import Sari from "./components/Sari";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import NotFound from "./components/NotFound";
 import { getProducts } from "./service/apiService";
@@ -61,7 +60,7 @@ function App() {
                 ></ProductsGrid>
               }
             ></Route>
-            <Route path="/sari" element={<Sari products={cart}></Sari>}></Route>
+            {/* <Route path="/sari" element={<Sari products={cart}></Sari>}></Route> */}
             <Route path="/cart" element={<Cart products={cart}></Cart>}></Route>
             <Route path="*" element={<NotFound></NotFound>}></Route>
           </Routes>

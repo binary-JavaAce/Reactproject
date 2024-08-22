@@ -4,6 +4,6 @@ const url = axios.create({
   baseURL: "http://localhost:8080",
 });
 
-const getProducts = () => url.get("/api/products");
+const getProducts = () => url.get("shopping/api/products");
 
 export { getProducts };
