@@ -8,14 +8,6 @@ export default function ProductGrid({ products, addProductToCart }) {
   const [price, setprice] = useState("");
   const [rating, setRating] = useState("");
 
-  // useEffect(() => {
-  //   fetch("products.json")
-  //     .then((response) => response.json())
-  //     .then((data) => setProducts(data))
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // }, []);
   //search handler
   const handleSearch = (e) => setSearch(e.target.value);
 
